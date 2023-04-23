@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('DOCKER RUNNING') {
             steps {
-               echo ${env.VERSION}
+               echo ${env.Version}
             //    sh "docker version"
             //    sh "mvn --version"
             }
