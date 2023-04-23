@@ -5,6 +5,8 @@ pipeline {
         stage('DOCKER RUNNING') {
             steps {
                sh "pwd"
+               sh "docker version"
+               sh "mvn --version"
             }
         }
         stage('Create Docker Image') {
