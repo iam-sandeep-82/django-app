@@ -1,6 +1,13 @@
 pipeline {
     // agent { docker {image "iamsandeep82/django-app:latest"}}
     agent any
+
+    environment {
+        dockerHome = tool 'myDocker'  // tool will provide a installed path
+        mavenHome = tool 'myMaven'
+        PATH = "$dockerHome/bin:$mavenHome/bin:$PATH" //from $ accessing variable
+
+    }
     stages {
         stage('DOCKER RUNNING') {
             steps {
