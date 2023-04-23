@@ -11,7 +11,7 @@ pipeline {
             steps {
             
                 sh "docker build -t iamsandeep82/django-app:v1 ."
-                sh "docker run -d -p 8000:8000 -e SECRET_KEY=1234 iamsandeep82/django-app:v1"
+                sh "docker run -d -p 9000:9000 -e SECRET_KEY=1234 iamsandeep82/django-app:v1"
                 sh "curl locahost:8000"
             }
         }
