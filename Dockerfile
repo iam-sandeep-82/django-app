@@ -1,5 +1,7 @@
 FROM python:latest
 RUN apt-get update && apt-get install -y && rm -rf /var/lib/apt/lists/*
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 COPY requirements.txt ./
 RUN pip install -r requirements.txt
 COPY . .
