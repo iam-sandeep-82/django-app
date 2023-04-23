@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('DOCKER RUNNING') {
             steps {
-               sh "echo $PWD"
+               sh "pwd"
             }
         }
         stage('Create Docker Image') {
