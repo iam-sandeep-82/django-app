@@ -11,19 +11,19 @@ pipeline {
     stages {
         stage('DOCKER RUNNING') {
             steps {
-               sh "pwd"
-               sh "docker version"
-               sh "mvn --version"
+               echo ${env.VERSION}
+            //    sh "docker version"
+            //    sh "mvn --version"
             }
         }
-        stage('Create Docker Image') {
-            steps {
+        // stage('Create Docker Image') {
+            // steps {
             
-                sh "docker build -t iamsandeep82/django-app:v1 ."
-                sh "docker run -d -p 9000:9000 -e SECRET_KEY=1234 iamsandeep82/django-app:v1"
-                sh "curl locahost:9000"
-            }
-        }
+                // sh "docker build -t iamsandeep82/django-app:${env.VERSION} ."
+            //     sh "docker run -d -p 9000:9000 -e SECRET_KEY=1234 iamsandeep82/django-app:v1"
+            //     sh "curl locahost:9000"
+            // }
+        // }
         // stage('Package Installation') {
         //     steps {
         //         sh "python3 install -r requirements.txt"
