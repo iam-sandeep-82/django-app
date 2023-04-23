@@ -1,0 +1,79 @@
+/* 
+
+
+header{
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-image: url("");
+    background-size: 115px;
+    background-position: center;
+    align-items: center;
+    box-shadow:  2px 3px 12px #000000;
+}
+
+
+
+.title{
+    margin-left: 20px;
+}
+
+
+.title1{
+    margin-left: 10px;
+    font-size: 40px;
+    display: inline-block;
+    font-family: 'Faster One', cursive;
+    letter-spacing: 4px;
+}
+
+
+.header_box1{
+
+}
+
+.login_user{
+    
+}
+
+.hindi_title2{
+    font-size: 30px;
+    font-family: 'Noto Sans', sans-serif;
+
+}
+
+
+
+.title3{
+    margin-left: 5px;
+    font-size: 15px;
+    display: inline-block;
+    font-family: 'Merriweather Sans', sans-serif;
+    
+   
+}
+
+
+.logo2 img{
+    width: 42%;
+    display: block;
+    margin-left:5px;
+
+
+}
+
+
+
+.title1:hover .logo1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    opacity: 1;
+
+}
+
+ */

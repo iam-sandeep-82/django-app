@@ -1,0 +1,15 @@
+{% if messages %}
+{% for message in messages %}
+{% if message.tags %}
+<div class="alert {{message.tags}}">
+    <span class="closebtn " onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>Hey!</strong> {{message}}
+</div>
+{% else %}
+<div class="alert">
+    <span class="closebtn " style="background:coral;" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>Hey!</strong> {{message}}
+</div>
+{% endif %}
+{% endfor messages %}
+{% endif %}

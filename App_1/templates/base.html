@@ -1,0 +1,65 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>
+  {% block title %}  
+  __BASE.HTML__
+  {% endblock title %}
+  </title>
+  <!-- -----------------------------[ BOOTSTRAP CDN LINK ]------------------------- -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+  <!-- -----------------------------[ GOOGLE FONTS LINKS ]------------------------- -->
+    
+  <link rel="preconnect" href=" https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Teko:wght@300;500&display=swap" rel="stylesheet">        
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Faster+One&family=Fjalla+One&family=Montserrat+Subrayada&family=Oswald&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital@1&family=Roboto:ital,wght@1,300;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    
+  <!-- -----------------------------[ FONTAWESOME ICONS LINKS ]------------------------- -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">   
+  
+  <!--CSS-->
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'App_1\css\home.css'  %}">
+  <link rel="stylesheet" href="{% static 'App_1\css\header.css'  %}">
+  <link rel="stylesheet" href="{% static 'App_1\css\extrastyle.css'  %}">
+  <link rel="stylesheet" href="{% static 'App_1\css\search_page.css'  %}">
+  <!-- END CSS-->
+  {% block style %}
+  {% endblock style %}
+
+</head>
+<body>
+
+    {% block body %}  
+    BASE.HTML 
+    {% endblock body %}
+
+    <!-- JAVASCRIPT -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+          $("#datetimepicker1").datetimepicker({
+            format: 'DD/MM/YYYY HH:mm',
+          });
+        });
+    </script>
+
+    {% block js %}
+    {% endblock js %}
+    
+    <!-- END JAVASCRIPT -->
+
+</body>
+</html>

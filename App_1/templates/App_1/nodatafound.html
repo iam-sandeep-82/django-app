@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} 
+{{title}}
+{% endblock title %}
+
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 m-auto">
+            <img src="{% static 'App_1\images\data_not_found.jpg' %}" class='rounded mx-auto img-fluid mt-md-5' alt="Data not found" style="height: 400px; width:1080px"><br>
+            <div class='h3'></div>
+            <div class="display-6">{{res}}</div>
+        </div>
+    </div>
+
+
+    <a class="btn btn-primary" href={{url}} role="button">Back to Search</a>
+
+</div>
+
+{% endblock body %}

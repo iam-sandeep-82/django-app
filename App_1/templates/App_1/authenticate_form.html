@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block title %}
+{{title}}
+{% endblock title %}
+
+{% block style %}
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    body{
+        background-color:#ecf0f3;
+    }
+    
+
+    .form-container {
+        margin:auto;
+        padding:1rem;
+        overflow: visible;
+        max-width:600px;
+    }
+
+    
+
+    #form{
+        width:600px;
+        height: 450px;
+        padding: 60px 35px 35px 35px;
+        border-radius: 40px;
+        background: #ecf0f3;
+        box-shadow: 13px 13px 20px #cbced1,
+                    -13px -13px 20px #ffffff;
+    }
+
+    .form-header{
+        background-color: rgb(31, 31, 31);
+        width:100%;
+        padding: 5px;
+        border-radius: 20px;
+        
+    }
+
+    .form-header > h3{
+        text-align: center;
+        margin:auto;
+        text-transform: uppercase;
+        color: white;
+        font-family: 'Bebas Neue',sans-serif;
+        animation:tracking 500ms ease-in forwards;
+        font-size: 25px;
+        
+    }
+
+    @keyframes tracking{
+        to{
+            letter-spacing: 3.5px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.479);;
+        }
+
+        
+    }
+
+    
+
+    .form-header{
+        text-align: center;
+        color:white;
+        font-family: 'Roboto' sans-serif;
+
+    }
+
+    .form-input {
+        margin: auto;
+        width: 400px;
+        padding: 35px 5px 5px 5px;
+      }
+
+    .form-input input{
+        text-align: center;
+        width:100%;
+        border: none;
+        outline:none;
+        background: none;
+        font-size: 18px;
+        color: #555;
+        padding:15px 10px 15px 5px;
+    }
+    
+    .username, .password {
+      border-radius: 25px;
+      box-shadow: inset 8px 8px 8px #cbced1,
+                  inset -8px -8px 8px #ffffff;
+    }
+
+    .form-input input::placeholder{
+        text-align: center;
+    }
+    /* ------------BUTTON GROUP SECION--------------------- */
+    .button-group {
+        margin-top: 20px;
+        display: flex;
+        align-self: center;
+        justify-content: center;
+    }
+
+
+    .button-group > * {
+        padding:10px;
+        margin: 5px;
+        width:100px;
+    }
+
+    .btn-info{
+        width:150px;
+    }
+    
+
+    button[type='submit']{
+        background-color: #24CEA9;
+        color:white;
+    }
+
+
+
+
+
+
+    @keyframes bd-animate {
+        to {
+            width: 600px;
+            background-color: rgb(104, 0, 189);
+        }
+    }
+
+
+    .bot-bd {
+        margin: 0px auto 2rem auto;
+    }
+
+    /* MEDIA PROPERTY FOR MOBILE SCREENS */
+    @media (max-width:500px) {
+        .form-container {
+            margin: auto;
+            padding: 0.2rem;
+            position: relative;
+            width: 300px;
+            border-radius: 10px;
+            top:2.5rem;
+        }
+        #form{
+            width:100%;
+            height: 350px;
+            border-radius: 40px;
+            background: #ecf0f3;
+        }
+
+        .form-input input{
+            text-align: center;
+            width:55.5%;
+            border: none;
+            outline:none;
+            background: none;
+            font-size: 12px;
+            color: #555;
+            padding:12px;
+        }
+        
+        .username, .password {
+          border-radius: 25px;
+          box-shadow: inset 8px 8px 8px #cbced1,
+                      inset -8px -8px 8px #ffffff;
+        }
+    
+        .form-input input::placeholder{
+            text-align: center;
+        }
+        /* ------------BUTTON GROUP SECION--------------------- */
+        .button-group {
+            margin:auto;
+            margin-top: 20px;
+            padding:4px 6px;
+            font-size: 0.8rem;
+
+        }
+    
+    
+        .button-group > * {
+            padding:4px 6px;
+            width:60%;
+            font-size:0.7rem;
+            font-family:'raleway';
+            font-weight:300;
+        }
+    
+        .btn-info{
+            width:60%;
+        }
+        
+    
+        button[type='submit']{
+            background-color: #24CEA9;
+            color:white;
+        }
+
+        .form-header h3{padding:0.2rem; font-size:1rem;}
+
+    }
+</style>
+{% endblock style %}
+
+{% block body %}
+
+<body>
+
+    <div class="form-container">
+        <form id='form' method='POST'>
+            {% csrf_token %}
+
+            <div class='form-header'><h3>Login Officer</h3></div>
+         
+            {% for field in form_ins %}
+            <div class="form-input">
+                {{field}}
+                {{field.help_text}}
+            </div>
+            {% endfor form_ins %}
+
+            <!-- SUBMIT, REST, BACK TO HOMEPAGE move into chunk temp of button-group.html file -->
+
+          
+            <div class=" button-group">
+                <button type="submit" class="btn btn-primary btn-md">Submit</button>
+                <button type="reset" class="btn btn-warning btn-md">Reset</button>
+                <!-- <button class="btn btn-info ms-auto " href='{% url "App_1:HOMEPAGE" %}'>Back to Home</button> -->
+                <a class="btn btn-info" href='{% url "App_1:HOMEPAGE" %}' role="button">Home</a>
+            </div>
+        
+
+        </form>
+
+
+
+    </div>
+
+
+
+
+
+
+</body>
+
+{% endblock body %}
+
+</html>

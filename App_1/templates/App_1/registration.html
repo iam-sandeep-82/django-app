@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %} 
+{{title}}
+{% endblock title %}
+
+{% block style %} 
+<style>
+/* MESSAGE FRAMEWORK CSS */
+.info{background-color: rgba(149, 255, 255, 0.685); color:black;}
+.warning{background-color: rgba(255, 196, 34, 0.842); color:black;}
+.success{background-color: rgba(0, 221, 37, 0.856); color:black;}
+
+.alert {
+        padding: 5px;
+        display: block;
+        border-radius: 10px;
+        text-align: center;
+        align-self: center;
+    }
+    
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    
+    .closebtn:hover {
+        color: black;
+    }
+</style>
+{% endblock style %}
+
+{% block body %}
+
+<body class='reg_body'>
+    
+    <div class="nav-header">
+        <div class="row">
+            <div class="col display-6 top-bar">{{header}} <span class="text-muted h6">{{statecode.title}} Site</span></div>      
+        </div>
+    </div>
+
+
+    <div class="container reg_cont ">
+        <div class="row align-items-center">
+            <div class="col-md-8 mt-4">
+                <form method="POST" novalidate >
+                    {% csrf_token %}
+                    
+                    <!------------------------ MESSAGES SECTION   -------------------------------------->
+                    {% include 'chunk_temp/message.html' %}
+                    <!-------------------------- END MESSAGES SECTION   -------------------------------->
+                    
+                    <!-- MAIN-FORM-SECTION -->
+                    <!-- Capture the non field errors from the FORM  -->
+                    <span class="required_error">{{form_ins.non_field_errors|striptags}} </span>
+                    
+                        {% for field in form_ins %}
+
+                            {% if field.id_for_label == 'id_rto_office' or field.id_for_label == 'id_reg_date' or field.id_for_label == 'id_insurance' or field.id_for_label == 'id_permit_expiry' or field.id_for_label == 'id_fuel_type' or field.id_for_label == 'id_doi' or field.id_for_label == 'id_status' or field.id_for_label == 'id_fine' or field.id_for_label == 'id_offence_on' or field.id_for_label == 'id_vechile_class' or field.id_for_label == 'id_last_payment' %}
+                                
+                                <div class="form-floating mb-3">
+                                    {%  render_field  field value=det %}  
+                                    <div class="h6 m-md-1">{{field.help_text}}</div>
+                                    {% for error in field.errors %}
+                                    <span class='field_error'>{{error|striptags}}</span>
+                                    {% endfor %}
+                                </div>
+
+                            {% else %}
+
+                                <div class="form-floating mb-3">
+                                    {%  render_field  field value=det %}   
+                                    <label for="floatingInput">{{field.label}}</label>
+                                    <div class="h6 m-md-2">{{field.help_text}}</div>
+                                    {% for error in field.errors %}
+                                    <span class='field_error'>{{error|striptags}}</span>
+                                    {% endfor %}
+                                    
+                                </div>
+                            
+                            {% endif %}
+                        <br>
+                        {% endfor %}
+              
+
+                    <!-- SUBMIT, REST, BACK TO HOMEPAGE move into chunk temp of button-group.html file -->
+
+                    {% include 'chunk_temp/button-group.html' %}
+
+
+                    
+                </form>
+
+                <!-- END-MAIN-FORM-SECTION -->
+                
+            </div>
+
+
+            <div class="col-md-4 mx-auto my-auto" style="position: relative"> 
+                <!-- SIDE SECTION BANNER -->
+                <small class="display-5 time mb-2">{{time|date:'M-H | d:m:s'}}</small>
+
+                <figure class="figure">
+                    <img src="{% static 'App_1\images\license.jpg' %}" class="side-banner img-fluid rounded" alt="Image not found :(">
+                    <figcaption class="figure-caption text-end">{{statecode.title}} State Goverment</figcaption>
+                </figure>
+                <!-- END-SIDE SECTION BANNER -->
+            </div>
+
+
+        </div>
+    </div>
+
+</body>
+
+{% endblock body %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+
+    .form-cont{max-width:500px; margin:auto; overflow:hidden; }
+    .form-area{display: flex; flex-direction: column; align-items: center; justify-content: center; padding:1rem; background:rgb(255, 207, 207); border-radius: 20px;}
+    
+    form{font-family: 'roboto', sans-serif; font-size:1.5rem; color:black; font-weight:300; display: flex; flex-direction: column; align-items: center; justify-content: space-around}
+
+    .otp-field{font-family:'poppins';padding:4px 10px; border-radius: 5px; color:black; background:rgb(248, 237, 237);font-size:1.2rem; text-align:center}
+
+    .btn{padding:6px 12px; margin: 2rem ; color: white; background:rgb(0, 0, 0); font-weight:400;
+    font-size:1rem}
+    
+    .mess{font-family:'poppins'; font-size:1rem; color:black; font-weight:400; text-align:center}
+</style>
+{% endblock style %}
+
+{% block title %}
+OTP
+{% endblock title %}
+
+{% block body %}
+<div class="form-cont">
+    <div class="form-area">
+        <form action="/verify_otp/" method='post'>
+            {% csrf_token %}
+                {{form}}
+                <input type="submit" class='btn' value="Confirm OTP">
+                <h4 class='mess'>OTP has been sent to your registered mail id.</h4>
+        </form>
+    </div>
+</div>
+   
+
+{% endblock body %}
+

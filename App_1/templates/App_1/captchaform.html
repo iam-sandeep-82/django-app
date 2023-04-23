@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} 
+{{title}}
+{% endblock title %}
+
+
+{% block body %}
+
+
+<form action="" method="post">
+{% csrf_token %}
+{{form_ins.as_p}}
+<button type="submit" class="btn btn-primary btn-md">Confirm OTP</button>
+</form>
+
+
+
+{% endblock body%}

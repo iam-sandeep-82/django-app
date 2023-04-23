@@ -1,0 +1,243 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- -----------------------------[ BOOTSTRAP CDN LINK ]------------------------- -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <!-- -----------------------------[ GOOGLE FONTS LINKS ]------------------------- -->
+
+    <link rel="preconnect" href=" https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Teko:wght@300;500&display=swap" rel="stylesheet">        
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Faster+One&family=Fjalla+One&family=Montserrat+Subrayada&family=Oswald&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital@1&family=Roboto:ital,wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Martel:wght@300;600&display=swap" rel="stylesheet">
+    <!-- -----------------------------[ FONTAWESOME ICONS LINKS ]------------------------- -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+
+    <!-- -----------------------------[ MY CSS LINKS ]------------------------- -->
+    <link rel="stylesheet" href="{% static 'App_1\css\main_home.css'  %}">
+    <link rel="stylesheet" href="{% static 'App_1\css\home.css'  %}">
+    <link rel="stylesheet" href="{% static 'App_1\css\header.css'  %}">
+    <link rel="stylesheet" href="{% static 'App_1\css\extrastyle.css'  %}">
+    <!-- STYLESHEET FOR MOBILE -->
+    <link rel="stylesheet" media='(max-width:500px)' href="{% static 'App_1\css\mobile.css' %}">
+    <!-- STYLESHEET FOR TABLET -->
+    <link rel="stylesheet" media='(max-width:768px)' href="{% static 'App_1\css\tablet.css' %}">
+
+    <!-- mobo_navbar_css load when small screen appear-->
+    <link rel="stylesheet" media='(max-width:500px)' href="{% static 'App_1\css\mobo_navbar.css' %}">
+
+
+    <title>VEHinfo</title>
+
+<body class='body_home'>
+
+    <!-- ------------------ [HEADER FLUID-CONTAINER] -------------- -->
+
+        
+    <header id='main-header'>
+
+        <nav id="main-nav">
+     
+            <div class="left-title">
+                <h4 class='vahan m-l'>VEH <span style='font-size:2rem'> info</span><span class='vahan-hindi'>| </span></h4>
+                <div class="icon"><img src= "{% static 'App_1\images\vahaan_logo.svg' %}"  alt=""></div>
+            </div>
+
+            
+
+            <div class='right-title'>
+                <h5><span class='time'>{{time}}</span> {% if curr_user %} <span class='curr-user'>{{sal}}&nbsp;{{curr_user|title}} <i class="fas fa-user-check"></i></span> {% endif %}</span></h5>
+            </div>
+
+           
+            
+        </nav>
+
+    </header>
+
+
+
+
+     <!-- ------------------ [BODY CONTAINER] -------------- -->
+
+    <div class="container">
+        
+
+        <nav class='mt-md-3' id='nav_for_large'>
+            <!------------------------ LEFT NAV BUTTONS   -------------------------------------->
+            <div class="home-btn1">
+                <a class="navbtn" href="{% url 'App_1:HOMEPAGE' %}"><i class="fas fa-home left_nav_btn_icon"></i>Home</a>
+                <a class="navbtn" href="#"><i class="fas fa-search-location"></i> Nearby RTO</a>
+            </div>
+            <!------------------------ END LEFT NAV BUTTONS   -------------------------------------->
+
+            <!------------------------ MESSAGES SECTION   -------------------------------------->
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags %}
+                    <div class="alert {{message.tags}}">
+                        <span class="closebtn " onclick="this.parentElement.style.display='none';">&times;</span> 
+                        <strong>Hey!</strong> {{message}}
+                    </div>
+                    {% else %}
+                    <div class="alert">
+                        <span class="closebtn " style="background:coral;" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        <strong>Hey!</strong> {{message}}
+                    </div>
+                    {% endif %}
+                {% endfor messages %}
+            {% endif %}
+            <!-------------------------- END MESSAGES SECTION   -------------------------------->
+
+            <!------------------------ RIGHT NAV BUTTONS IF LOGIN   -------------------------------------->
+            <div class="nav_all_btns">
+                {% if user.is_authenticated %}
+                <a class="navbtn" href='{% url "App_1:RC_REGISTER" "MH" %}'>RC Register <i class="fas fa-car-alt"></i></a>
+                <a class="navbtn" href='{% url "App_1:DL_REGISTER" "MH" %}'>DL Register <i class="far fa-id-badge"></i></a>
+                <a class="navbtn" href='{% url "App_1:FINE_REGISTER" %}'> Fine Register <i class="fas fa-file-invoice-dollar"></i></a>
+                <a class="navbtn" href='{% url "App_1:LOGOUT" %}'>Logout <i class="fas fa-sign-out-alt right_nav_btn_icon"></i></a>
+
+            <!------------------------ RIGHT NAV BUTTONS IF ~LOGIN   -------------------------------------->
+                {% else %}
+                <a class="navbtn" href="{% url 'App_1:LOGIN' %}">Login <i class="fas fa-sign-in-alt right_nav_btn_icon"></i></a>
+                {% endif %}
+                <a class="navbtn" href="{% url 'App_1:SETPASSWORD' %}">Forget Password <i class="fas fa-unlock-alt"></i></a>
+            </div>
+
+        </nav>
+
+
+        <nav id='nav_for_small'>
+            <div class="nav-icon">
+              <input type="checkbox" name="" id="iamcheck">
+              <label for="iamcheck"><i class="far fa-compass"></i></label>
+              
+              <div class="nav-link">
+                <ul>
+                  <li><a href="{% url 'App_1:HOMEPAGE' %}"><span class='icon'><i class="fas fa-home"></i></span>Home</a></li>
+
+                  <li><a href="{% url 'App_1:SETPASSWORD' %}">Forget Password <i class="fas fa-unlock-alt"></i> </a></li>
+
+
+                  <li><a href=""><span class='icon'><i class="fas fa-search-location"></i></span>Nearby RTO</a></li>
+
+
+            
+                    {% if user.is_authenticated %}
+                    <li><a href='{% url "App_1:RC_REGISTER" "MH" %}'><span class='icon'><i class="fas fa-car-alt"></i></span>Rc Register</a></li>
+
+                    <li><a href='{% url "App_1:DL_REGISTER" "MH" %}'><span class='icon'><i class="far fa-id-badge"></i></span>DL Register</a></li>
+
+                    <li><a href='{% url "App_1:FINE_REGISTER" %}'><span class='icon'><i class="fas fa-file-invoice-dollar"></i></span>Fine Register</a></li>
+
+                    <li><a href='{% url "App_1:LOGOUT" %}' class='home'><span class='icon'><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
+                    
+                    {% else %}
+                    
+                    <li><a href="{% url 'App_1:LOGIN' %}" class='home'><span class='icon'><i class="fas fa-home"></i></span>Login</a></li>
+
+
+                    {% endif %}
+
+                    
+                    
+                </ul>
+            </div>
+            </div>
+          </nav>
+        
+
+
+        <div class="text-bar">
+            <div class="text_service rounded-0"><h3>OUR SERVICES</h3></div>
+        </div>
+        
+
+
+        <main>
+                <div class="board">
+                    <a href="{% url 'App_1:RC-SEARCH' %} "><img src="{% static 'App_1\images\rc_search_svg.svg' %}" alt=""></a>
+                </div>
+                <div class="board">
+                    <a href=" {% url 'App_1:SEARCH' %} "><img src="{% static 'App_1\images\dl_search_svg.svg' %}"  alt=""></a>
+                </div>
+                <div class="board ">
+                    <a href=" {% url 'App_1:FINE-SEARCH' %} "><img src="{% static 'App_1\images\fine_payment_svg.svg' %}"alt=""></a>
+                </div>    
+        </main>
+
+        <br>
+        <br>
+
+        <section id='instruction'>
+
+            <div class="instruction-news all_navtitle_bar">
+                <h4 class='display-5'> VEHinfo - Integrated Solution  </h4>
+            </div>
+            
+            <div class="list_services">
+                <div class="h5">VEHinfo - The Integrated Solution for Vehicle Registration</div>
+
+                <p>Vech Info is a highly flexible and comprehensive system that takes care of all the burdensome activities of Vehicle Registration, leaving the Transport Department to deal with more important business issues. The software enables the processes at RTO/DTO/MLO/SDM involving Vehicle Registration, Fitness, Taxes, Permits & Enforcement to get computerized.</p>
+                <p style="color:#ffde49;">VAHAN Services</p>
+
+                <ul style="color:#ffde49;">
+                    <li class="li">Vehicle Registration</li>
+                    <li class="li">Fine or Challan Payment</li>
+                    <li class="li">RC Registration</li>
+
+                </ul>
+
+
+                <div class="instruction-news hoverelement">
+                    <h4 class='display-5'>  Set of Services   Being offered at Present  </h4>
+                </div>
+    
+                <p class='h6'><bold>Vehicle Search</bold> - It provides a nationwide search over the digitized data of Registered Vehicles. Stake holders may view the details of Registered Vehicles online based on the certain parameters viz.</p>
+                    
+                <ul>
+                    <li class="li">Registration No (Partial information will be display to citizen and authorized users can see full details)</li>
+                    <li class="li">Chassis No (only for authorized users)</li>
+                    <li class="li">Engine No (only for authorized users)</li>
+                </ul>
+    
+                              
+            </div>
+
+
+
+
+            <div class="instruction-news hoverelement">
+                <h4 class='display-5'>Latest News & Announcement</h4>
+            </div>
+        
+
+            <aside>
+                <p><bold class="h6">National Register:</bold> Vehicles Data from the centralized VEHinfo 4.0 and different State Registers of non Vahan offices situated at respective State Registers flow to the National Register. Selected information has been envisaged to be captured at the national level. The National Register will act as a central repository of all crucial data / information. This will also enable users to avail the service on "Anywhere Service" basis. National Register will provide information to MoRTH, RTO/ DTO/ MLO/ SDM, inter-state check post, police department and other G2C services.</p>
+                <p><bold class="h6">Note:</bold> Kindly send approval letter from the concerned department on letter head along with this application to NIC(HQ) for activation of newly created user. Download Application Form for User-Id Activation</p>
+            </aside>
+
+
+
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Copyright &copy; 2021 <span> VEHinfo | Vechile Minister Of * </span>| Created by Sandy. </p>
+    </footer>
+
+
+</body>
+</html>
